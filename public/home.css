@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+/* homepage */
+.homepage {
+  background-image: url(/img/cba3.png);
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: 240vh;
+  position: relative;
+}
+#homepage-text {
+  position: absolute;
+  top: 40%;
+  left: 30%;
+  font-family: 'Lobster', cursive;
+  transform: translate(-50%, -50%);
+  font-size: 70px;
+  color: rgb(255, 255, 255);
+}
+
+/* Main Box Recent*/
+#main_box {
+  margin: 90px;
+  height: 75vh;
+  border-radius: 10px;
+  align-items: center;
+  background-color: white !important;
+}
+.card {
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid black;
+  margin: 20px;
+}

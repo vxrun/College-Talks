@@ -1,0 +1,181 @@
+<%- include('partials/header') %>
+
+  <head>
+    <link rel="stylesheet" href="/blog.css">
+    <script src="/js/singleBlog.js"></script>
+  </head>
+
+  <div>
+
+
+
+    <div class="container p-5">
+      <div class="row">
+
+
+        <% for(let i in profilePost){ %>
+          <% if (profilePost[i].type=="Blog" ) {%>
+            <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+
+
+
+              <div class="card">
+                <img class="card-img" src="https://www.emergingedtech.com/wp/wp-content/uploads/2018/04/blogging.jpg"
+                  alt="Bologna">
+                <div class="card">
+                  <a href="#" class="btn btn-light btn-sm">
+                    <%= profilePost[i].type %>
+                  </a>
+                </div>
+
+
+                <div class="card-body">
+                  <h4 class="card-title">
+                    <%= profilePost[i].title %>
+                  </h4>
+
+
+                  <% if(profilePost[i].content.length>25){%>
+                    <% str1=profilePost[i].content;%>
+                      <% str1=str1.substring(0,100);%>
+                        <p class="card-text padup">
+                          <%= str1 %> . . .
+                        </p>
+                        <% } else{%>
+                          <% str1=profilePost[i].content; %>
+                            <p class="card-text padup">
+                              <%= str1 %>
+                            </p>
+                            <% }%>
+                              <a href="/content/<%= profilePost[i]._id %>" class="btn btn-info">Read
+                                More</a>
+                </div>
+                <div class="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0">
+                  <div class="views">
+                    <%str2=profilePost[i].date.toString().substring(0,25); %>
+                      <%= str2 %>
+                  </div>
+                  <div class="stats">
+                    <button class="fa-solid fa-heart" id="like" onclick="myFunction('<%= profilePost[i]._id %>')">
+                    </button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <% } else if (profilePost[i].type=="Interview" ) { %>
+
+              <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+
+
+
+                <div class="card">
+                  <img class="card-img"
+                    src="https://www.apollotechnical.com/wp-content/uploads/2020/07/killer-second-interview-questions.jpg"
+                    alt="Bologna">
+                  <div class="card">
+                    <a href="#" class="btn btn-light btn-sm">
+                      <%= profilePost[i].type %>
+                    </a>
+                  </div>
+
+
+                  <div class="card-body">
+                    <h4 class="card-title">
+                      <%= profilePost[i].title %>
+                    </h4>
+
+
+                    <% if(profilePost[i].content.length>25){%>
+                      <% str1=profilePost[i].content;%>
+                        <% str1=str1.substring(0,100);%>
+                          <p class="card-text padup">
+                            <%= str1 %> . . .
+                          </p>
+                          <% } else{%>
+                            <% str1=profilePost[i].content; %>
+                              <p class="card-text padup">
+                                <%= str1 %>
+                              </p>
+                              <% }%>
+
+                                <a href="/content/<%= profilePost[i]._id %>" class="btn btn-info">Read
+                                  More</a>
+                  </div>
+                  <div class="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0">
+                    <div class="views">
+                      <%str2=profilePost[i].date.toString().substring(0,25); %>
+                        <%= str2 %>
+                    </div>
+                    <div class="stats">
+                      <button class="fa-solid fa-heart" id="like" onclick="myFunction('<%= profilePost[i]._id %>')">
+                      </button>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <% } else if (profilePost[i].type=="Notice" ) { %>
+                <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+
+
+
+                  <div class="card">
+                    <img class="card-img"
+                      src="https://carrollcountyohio.us/wp-content/uploads/2018/03/important-notice.png" alt="Bologna">
+                    <div class="card">
+                      <a href="#" class="btn btn-light btn-sm">
+                        <%= profilePost[i].type %>
+                      </a>
+                    </div>
+
+
+                    <div class="card-body">
+                      <h4 class="card-title">
+                        <%= profilePost[i].title %>
+                      </h4>
+
+
+                      <% if(profilePost[i].content.length>25){%>
+                        <% str1=profilePost[i].content;%>
+                          <% str1=str1.substring(0,100);%>
+                            <p class="card-text padup">
+                              <%= str1 %> . . .
+                            </p>
+                            <% } else{%>
+                              <% str1=profilePost[i].content; %>
+                                <p class="card-text padup">
+                                  <%= str1 %>
+                                </p>
+                                <% }%>
+
+                                  <a href="/content/<%= profilePost[i]._id %>" class="btn btn-info">Read
+                                    More</a>
+                    </div>
+                    <div class="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0">
+                      <div class="views">
+                        <%str2=profilePost[i].date.toString().substring(0,25); %>
+                          <%= str2 %>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+                <% } %>
+                  <% } %>
+      </div>
+
+    </div>
+  </div>
+  <script>
+    window.addEventListener('scroll', function () {
+      var header = document.querySelector('.header');
+      header.classList.toggle("sticky", window.scrollY > 0);
+    });
+  </script>
+
+  <%- include('partials/footer') %>
+    </body>
+
+    </html>

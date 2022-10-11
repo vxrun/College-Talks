@@ -1,0 +1,141 @@
+<%- include('partials/header') %>
+
+
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="style" href="https://cdnjs .cloudflare.com/ajax/libs/font awesome/5.15.2/css/all.min.css" />
+        <link rel="stylesheet" href="/public/search.css" />
+        <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+                text-align: center;
+            }
+
+            * {
+                box-sizing: border-box;
+
+            }
+
+            /* Create a column layout with Flexbox */
+            .row {
+                display: flex;
+            }
+
+            /* Left column (menu) */
+            .left {
+                flex: 35%;
+                padding: 15px 0;
+            }
+
+            .left h2 {
+                padding-left: 8px;
+            }
+
+            /* Right column (page content) */
+            .right {
+                flex: 65%;
+                padding: 15px;
+            }
+
+            /* Style the search box */
+            #mySearch {
+                width: 54%;
+                font-size: 18px;
+                padding: 11px;
+
+                border: 1px solid #ddd;
+                background-color: #e26d5c;
+                box-shadow: 0.25rem 0.25rem 0rem #f0b2a8;
+            }
+
+            /* Style the navigation menu inside the left column */
+            #myMenu {
+                width: 54%;
+                list-style-type: none;
+                padding: 0;
+
+                text-align: center;
+                font-style: bold;
+                margin-bottom: 580px;
+
+            }
+
+            #myMenu li a {
+                padding: 12px;
+                text-decoration: none;
+                color: rgb(161, 217, 250);
+                display: block;
+                left: 50%;
+                margin-left: 3000px;
+                transform: translateX(44%);
+                font-style: bold;
+            }
+
+            #myMenu li a:hover {
+                background-color: #eee;
+            }
+
+            ::placeholder {
+                color: #f0b2a8;
+            }
+        </style>
+    </head>
+
+    <body>
+
+
+
+        <div class="row">
+            <div class="input-wrapper" style="background-color:rgb(161, 217, 250);">
+                <div class="fa fa-search"></div>
+                <input type="text" id="mySearch" onkeyup="myFunction()" placeholder="Search.."
+                    title="Type in a category">
+                <ul id="myMenu">
+
+                    <% for(let i in result){ %>
+                        <li><a href="/content/<%= result[i]._id %>">
+                                <%= result[i].title %>
+                            </a></li>
+                        <% } %>
+                </ul>
+            </div>
+        </div>
+
+        <script>
+
+            function myFunction() {
+
+
+                var input, filter, ul, li, a, i;
+                input = document.getElementById("mySearch");
+                filter = input.value.toUpperCase();
+                ul = document.getElementById("myMenu");
+                li = ul.getElementsByTagName("li");
+
+                for (i = 0; i < li.length; i++) {
+                    a = li[i].getElementsByTagName("a")[0];
+                    a.style.marginLeft = "0px";
+                    if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                        a.style.color = "black";
+                        li[i].style.display = "";
+                    } else {
+
+                        li[i].style.display = "none";
+                    }
+                }
+
+            }
+
+            window.addEventListener('scroll', function () {
+                var header = document.querySelector('.header');
+                header.classList.toggle("sticky", window.scrollY > 0);
+            });
+
+
+
+        </script>
+
+        <%- include('partials/footer') %>
+
+    </body>

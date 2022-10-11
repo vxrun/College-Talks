@@ -1,0 +1,72 @@
+<%- include('partials/header') %>
+
+  <head>
+
+
+    <link rel="stylesheet" href="/create-post.css" />
+  </head>
+
+  <body>
+
+
+
+    <form action="/create-post" method="POST">
+      <div class="row main">
+        <div class="col-4 pr-5">
+          <div class="form-group row">
+            <label for="exampleFormControlInput1">TITLE</label>
+            <textarea name="title" class="bg-primary" id="title" rows="5" placeholder="Enter the Title"></textarea>
+          </div>
+
+          <fieldset class="form-group option">
+            <div class="row">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="Blog" checked>
+                <label class="form-check-label" for="gridRadios1">
+                  BLOG
+                </label>
+              </div>
+              <% if(admin) { %>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="Notice">
+                  <label class="form-check-label" for="gridRadios2">
+                    NOTICE
+                  </label>
+                </div>
+                <% } %>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="Interview">
+                    <label class="form-check-label" for="gridRadios3">
+                      INTERVIEW EXPERIENCE
+                    </label>
+                  </div>
+            </div>
+          </fieldset>
+
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          <button type="submit" class="btn btn-primary" id="submit">Post</button>
+
+        </div>
+        <div class="col-1"></div>
+        <div class="col-7">
+          <div class="form-group row">
+            <label for="content">DESCRIPTION</label>
+            <textarea name="content" class="bg-primary" id="content" rows="22"
+              placeholder="Enter the description"></textarea>
+          </div>
+        </div>
+
+      </div>
+    </form>
+
+    <script>
+      window.addEventListener('scroll', function () {
+        var header = document.querySelector('.header');
+        header.classList.toggle("sticky", window.scrollY > 0);
+      });
+    </script>
+
+    <%- include('partials/footer') %>
+  </body>
+
+  </html>

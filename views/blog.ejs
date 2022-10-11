@@ -1,0 +1,86 @@
+<%- include('partials/header') %>
+
+  <head>
+    <link rel="stylesheet" href="/blog.css">
+    <script src="/js/singleBlog.js"></script>
+  </head>
+
+  <div>
+
+
+
+    <div class="container p-5">
+      <div class="row">
+
+
+        <% for(let i=blogs.length - 1 ; i>= 0 ; i--){ %>
+
+          <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+
+
+
+            <div class="card">
+              <img class="card-img" src="https://www.emergingedtech.com/wp/wp-content/uploads/2018/04/blogging.jpg"
+                alt="Bologna">
+              <div class="card">
+                <a href="#" class="btn btn-light btn-sm">
+                  <%= blogs[i].type %>
+                </a>
+              </div>
+
+
+              <div class="card-body">
+                <h4 class="card-title">
+                  <%= blogs[i].title %>
+                </h4>
+                <p id="upvote" style="visibility: hidden; display: none;">
+                  <%= blogs[i].upvote.length %>
+                </p>
+
+                <% if(blogs[i].content.length>25){%>
+                  <% str1=blogs[i].content;%>
+                    <% str1=str1.substring(0,100);%>
+                      <p class="card-text padup">
+                        <%= str1 %> . . .
+                      </p>
+                      <% } else{%>
+                        <% str1=blogs[i].content; %>
+                          <p class="card-text padup">
+                            <%= str1 %>
+                          </p>
+                          <% }%>
+                            <a href="/content/<%= blogs[i]._id %>" class="btn btn-info">Read More</a>
+              </div>
+              <div class="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0">
+                <div class="views">
+                  <%str2=blogs[i].date.toString().substring(0,25); %>
+                    <%= str2 %>
+                </div>
+                <div class="stats">
+                  <button class="fa-solid fa-heart" id="like" onclick="myFunction('<%= blogs[i]._id %>')">
+                  </button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <% } %>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+
+
+
+    window.addEventListener('scroll', function () {
+      var header = document.querySelector('.header');
+      header.classList.toggle("sticky", window.scrollY > 0);
+    });
+  </script>
+
+  <%- include('partials/footer') %>
+    </body>
+
+    </html>

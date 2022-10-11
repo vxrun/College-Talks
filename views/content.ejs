@@ -1,0 +1,176 @@
+<%- include('partials/header') %>
+
+
+    <head>
+
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            /* Add a gray background color with some padding */
+            body {
+                font-family: Arial;
+                background: #f1f1f1;
+            }
+
+            /* Header/Blog Title */
+            .head {
+                margin-top: 20px;
+                padding: 30px;
+                font-size: 40px;
+                text-align: center;
+                background: white;
+            }
+
+            /* Create two unequal columns that floats next to each other */
+            /* Left column */
+            .leftcolumn {
+                text-align: right;
+                width: 100%;
+            }
+
+            /* Right column */
+            .rightcolumn {
+                float: left;
+                width: 25%;
+                padding-left: 20px;
+            }
+
+            /* Fake image */
+            .fakeimg {
+                background-color: #aaa;
+                width: 40%;
+                align-self: center;
+                padding: 20px;
+                margin-bottom: 20px;
+                margin-right: 450px;
+
+            }
+
+            /* Add a card effect for articles */
+            .card {
+                background-color: white;
+                padding: 20px;
+                margin-top: 20px;
+            }
+
+            /* Clear floats after the columns */
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+
+            /* Footer */
+            .footer {
+                padding: 20px;
+                text-align: center;
+                background: #ddd;
+                margin-top: 20px;
+            }
+
+            .para {
+                text-align: left;
+                margin-left: 60px;
+                margin-right: 60px;
+            }
+
+            .upvote {
+                width: 8%;
+                margin-left: 90%;
+            }
+
+            #upvote {
+                margin-right: 75px;
+                margin-bottom: 20px;
+            }
+
+
+
+            /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+        </style>
+
+        <script src="/js/singleBlog.js"></script>
+    </head>
+
+
+
+    <body onload="FormatText();">
+
+        <div class="head">
+            <h2>
+                <%= blog.title %>
+            </h2>
+            <p id="blogId" style="visibility: hidden; display: none;">
+                <%= blog._id %>
+            </p>
+        </div>
+
+        <div class="row">
+            <div class="leftcolumn">
+                <div class="card">
+                    <% if(blog.type=="Blog" || blog.type=="Interview" ) { %>
+                        <button class="upvote" onclick="upvoted()">Upvote</button>
+                        <p id="upvote">
+                            <%= blog.upvote.length %>
+                        </p>
+                        <% } %>
+                            <h5>
+                                <%= blog.author %>
+                            </h5>
+                            <h5>
+                                <%= blog.date.toString().substring(0,25) %>
+                            </h5>
+                            <br>
+                            <div>
+                                <img class="fakeimg" <% if(blog.type=="Blog" ){ %>
+                                src="https://www.emergingedtech.com/wp/wp-content/uploads/2018/04/blogging.jpg"
+                                alt="Bologna">
+                                <% } else if(blog.type=="Notice" ){ %>
+                                    src="https://carrollcountyohio.us/wp-content/uploads/2018/03/important-notice.png"
+                                    alt="Bologna">
+                                    <% } else { %>
+                                        src="https://www.apollotechnical.com/wp-content/uploads/2020/07/killer-second-interview-questions.jpg"
+                                        alt="Bologna">
+                                        <% } %>
+                            </div>
+                            <br>
+                            <p class="para" id="mytext">
+                                <%= blog.content %>
+                            </p>
+                </div>
+            </div>
+        </div>
+
+
+        <br>
+        <script type="text/javascript">
+
+            function FormatText() {
+                var txt = document.getElementById("mytext").innerHTML;
+                var matches = txt.match(/#\w+/g);
+                if (matches == null)
+                    return;
+
+                for (i = 0; i < matches.length; i++) {
+                    txt = txt.replace(matches[i], "<b>" + matches[i] + "</b>")
+                }
+                document.getElementById("mytext").innerHTML = txt;
+
+            }
+            console.log("hii");
+        </script>
+
+        <script>
+            window.addEventListener('scroll', function () {
+                var header = document.querySelector('.header');
+                header.classList.toggle("sticky", window.scrollY > 0);
+            });
+        </script>
+
+        <%- include('partials/footer') %>
+
+    </body>
+
+    </html>
