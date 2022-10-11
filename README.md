@@ -1,5 +1,5 @@
 <h1 align="center">
-  <a href="https://github.com/jayantrana2001/CollegeTalks"><img src="https://www.americancampus.com/getmedia/b31fea34-7efa-4b9b-b22d-95f963cd589e/ACC-College-Talk-Logo?width=650&height=650&ext=.jpg" width="150"></a>
+  <a href="https://github.com/jayantrana2001/CollegeTalks">College Talks></a>
   <br>
   College Talks
 </h1>
