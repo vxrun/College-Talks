@@ -26,4 +26,4 @@ A Responsive platform for College students to post Blogs, share their Interview 
 Contributions, issues and feature requests are welcome!
 
 ## 🚀 About Me
-I'm **[Varun Kumar](www.linkedin.com/in/jayant-rana-717318197)**, currently an undergraduate student at Motilal Nehru National Institute of Technology(MNNIT).Currently Learning Data Structures and Algorithms, while understanding and implementing the fundamentals of computer engineering and learning web development.
+I'm Varun Kumar, currently an undergraduate student at Motilal Nehru National Institute of Technology(MNNIT). Currently Learning Data Structures and Algorithms, while understanding and implementing the fundamentals of computer engineering and learning web development.
