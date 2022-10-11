@@ -1,5 +1,4 @@
 <h1 align="center">
-  <a href="https://github.com/jayantrana2001/CollegeTalks">College Talks></a>
   <br>
   College Talks
 </h1>
